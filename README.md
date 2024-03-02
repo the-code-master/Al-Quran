@@ -1,7 +1,6 @@
 # Al Quran
 
-Read, listen Al quran with multiple translation and recitation
-live: https://hasanthebest.github.io/al-quran-js/
+
 
 ## Features
 
