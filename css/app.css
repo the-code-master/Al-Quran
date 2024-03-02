@@ -1,0 +1,53 @@
+@font-face {
+  font-family: me_quran;
+  src: url(../fonts/Uthmanic-Hafs.woff2);
+}
+
+@font-face {
+  font-family: bismillah;
+  src: url(../fonts/bismillah.woff);
+}
+#toTop{
+  background-image: url("background.jpg");
+}
+
+.raq {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "bismillah" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.raq-bismallah:before {
+  content: "\fdfd";
+}
+
+.text_ar {
+  font-family: me_quran;
+}
+
+.sura_nav {
+  max-width: 868px;
+}
+
+main {
+  max-width: 868px;
+  margin: 2rem auto;
+}
+
+.player_controls {
+  z-index: 5000;
+}
+
+.playlist_tracks {
+  max-height: calc(100vh - 3rem);
+  overflow-y: scroll;
+}
+/*# sourceMappingURL=app.css.map */
