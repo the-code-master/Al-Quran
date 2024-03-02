@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al Quran</title>
+
+    <!-- Bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Google icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body id="toTop">
+    <header
+      class="text-center bg-light sura sticky-md-top w-100 shadow-sm p-3 p-md-0"
+    >
+      <!-- sura navigation -->
+      <div
+        class="sura_nav row-cols-md-4 row-cols-1 d-flex flex-column flex-md-row gap-2 mx-auto p-2"
+      >
+        <!-- Index -->
+        <div class="form-floating sura_nav-index col">
+          <select
+            class="form-select select_sura-index text_ar"
+            id="floatingSelect"
+            aria-label="Floating label select example"
+          ></select>
+          <label for="floatingSelect">Sura</label>
+        </div>
+
+        <!-- Ayah -->
+        <div class="form-floating col">
+          <select
+            class="form-select sura_nav-gotoAyah"
+            id="floatingSelectGoToAyah"
+            aria-label="Go to Ayah"
+          ></select>
+          <label for="floatingSelectGoToAyah">Ayah</label>
+        </div>
+
+        <!-- Translation -->
+        <div class="form-floating sura_nav-translation col">
+          <select
+            class="form-select select_sura-translations"
+            id="floatingSelect"
+            aria-label="Floating label select example"
+          >
+            <option selected>Open this select menu</option>
+          </select>
+          <label for="floatingSelect">Translations</label>
+        </div>
+
+        <!-- Recitation -->
+        <div class="form-floating sura_nav-recitation col">
+          <select
+            class="form-select select_sura-recitation text_ar"
+            id="floatingSelect"
+            aria-label="Floating label select example"
+          >
+            <option selected>Select reciter</option>
+          </select>
+          <label for="floatingSelect">Recitation</label>
+        </div>
+      </div>
+    </header>
+
+    <main class="mt-0 position-relative">
+      <!-- Sura meta info -->
+      <div
+        class="sura_header d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center mb-4 bg-light p-4 rounded-bottom shadow-sm"
+      >
+        <!-- listen sura -->
+        <div class="sura_header-start d-flex flex-column">
+          <button
+            class="btn btn-outline-primary ps-0 border-0 sura_header-start_info d-flex align-items-center"
+          >
+            <i class="material-icons me-2">playlist_play</i>
+            <span>Sura Info</span>
+          </button>
+          <button
+            class="sura_header-start_listen btn border-0 ps-0 btn-outline-success d-flex align-items-center"
+          >
+            <i class="material-icons me-2">volume_up</i>
+            <span>Listen</span>
+          </button>
+        </div>
+
+        <!-- bimillah -->
+        <div
+          class="sura_header-middle order-2 order-md-0 text-center flex-grow-1 mt-4 mt-md-0"
+        >
+          <h2
+            class="heading-bismillah text-center"
+            title="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+          >
+            <span class="raq raq-bismallah display-1"></span>
+          </h2>
+        </div>
+
+        <!-- Sura name and info -->
+        <div class="sura_header-end flex-grow-1 flex-md-grow-0 text-end">
+          <div class="sura_info">
+            <h1 class="mb-0">
+              <span class="sura_number-ar text_ar"></span>
+              <span class="sura_name-ar text_ar"></span>
+            </h1>
+            <p class="mb-0 text-black-50">
+              <span class="sura_number-en px-2 rounded-circle border"></span>
+              <span class="sura_name-en"></span>,
+              <span class="sura_name-tr_en"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display Ayahs -->
+      <ul class="list-group list-group-flush list-ayahs"></ul>
+      <a
+        href="#toTop"
+        class="btn btn-sm position-absolute start-100 btn-outline-success"
+        title="Go to Top"
+      >
+        <span class="material-icons"> keyboard_double_arrow_up </span>
+      </a>
+    </main>
+
+    <!-- audio bar -->
+    <section
+      class="player_controls d-flex justify-content-center align-items-center align-items-end py-1 px-3 bg-light position-sticky bottom-0 d-none shadow-sm"
+    >
+      <!-- playlist button -->
+      <div class="player_controls-playlist position-relative">
+        <button class="btn playlist_control-togglePlaylist" title="Playlist">
+          <span class="material-icons">queue_music</span>
+        </button>
+
+        <!-- playlist track -->
+        <div
+          class="playlist_tracks position-absolute bottom-0 start-0 bg-light p-3 d-none mb-5 shadow rounded-top"
+          style="width: 300px"
+        >
+          <h5 class="playlist_tracks-name text-center mb-3 text-secondary"></h5>
+          <ol class="playlist_tracks-listItem list-group-flush m-0 p-0"></ol>
+        </div>
+      </div>
+
+      <!-- next, prev, play and pause -->
+      <div
+        class="control_operations d-flex justify-content-center position-relative"
+      >
+        <!-- Prev Sura -->
+        <button class="btn control_operations-prevSura" title="Previous Sura">
+          <span class="material-icons"> skip_previous </span>
+        </button>
+        <!-- Prev Ayah -->
+        <button class="btn control_operations-prev" title="Previous">
+          <span class="material-icons"> fast_rewind </span>
+        </button>
+        <!-- play, pause, loading -->
+        <div class="operation_btn position-relative" style="width: 50px">
+          <!-- pause -->
+          <button
+            class="btn operation_btn-pause position-absolute w-100 d-none"
+            title="Pause"
+          >
+            <span class="material-icons"> pause </span>
+          </button>
+          <!-- play -->
+          <button
+            class="btn operation_btn-play position-absolute w-100 d-none"
+            title="Play"
+          >
+            <span class="material-icons"> play_arrow </span>
+          </button>
+          <!-- downloading -->
+          <button
+            class="btn operation_btn-loading position-absolute w-100 d-none"
+            title="Downloading"
+          >
+            <span class="material-icons"> downloading </span>
+          </button>
+        </div>
+        <!-- Next Ayah -->
+        <button class="btn control_operations-next" title="Next">
+          <span class="material-icons"> fast_forward </span>
+        </button>
+        <!-- Next Sura -->
+        <button class="btn control_operations-nextSura" title="Next Sura">
+          <span class="material-icons"> skip_next </span>
+        </button>
+      </div>
+
+      <!-- Close button -->
+      <button
+        class="btn close_audio-playBar text-danger"
+        title="Close Audio Play Bar"
+      >
+        <span class="material-icons"> close </span>
+      </button>
+    </section>
+
+    <footer class="text-center">
+      &copy;
+      <a href="" target="_blank"
+        >Remember Me in your Prayers 🤲</a
+      >, 2024 | All rights reserved
+    </footer>
+
+    <!-- script -->
+    <!-- howler js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="./js/suraIndex.js"></script>
+    <script src="./js/translationIndex.js"></script>
+    <script src="./js/reciterIndex.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
